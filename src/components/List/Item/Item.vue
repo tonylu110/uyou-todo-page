@@ -2,11 +2,11 @@
   <div>
     <div class="list-item">
       <div class="time-area">
-        <span>12132123</span>
+        <span>{{ getTime(time as number) }}</span>
         <div>复制</div>
       </div>
       <span class="item-text">
-        1212123
+        {{ text }}
       </span>
       <div class="close-button">
         <img src="/images/close.png" alt="" />
@@ -19,106 +19,14 @@
 </template>
 
 <script setup lang="ts">
+import getTime from '../../../util/getTime';
 
+const props = defineProps({
+  time: Number,
+  text: String,
+})
 </script>
 
 <style scoped lang="scss">
-.list-item {
-  position: relative;
-  width: 260px;
-  background-color: #f6f2e9;
-  height: auto;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 1px 5px #7a695c50;
-  margin-bottom: 10px;
-
-  .time-area {
-    background-color: #ede4d8;
-    margin-left: -10px;
-    margin-top: -10px;
-    padding: 5px 10px;
-    width: 260px;
-    border-radius: 7px 7px 0 0;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-
-    span {
-      color: #cebfae;
-    }
-
-    div {
-      height: 10px;
-      padding: 5px;
-      line-height: 10px;
-      margin-right: -3px;
-      background-color: #00000010;
-      font-size: 10px;
-      border-radius: 3px;
-      color: #6e492f;
-      opacity: 0;
-      cursor: pointer;
-      transition: opacity 0.2s ease-in-out;
-
-      &:hover {
-        opacity: 1;
-      }
-
-      &:active {
-        background-color: #00000020;
-      }
-    }
-  }
-
-  .item-text {
-    display: block;
-    margin-top: 10px;
-    color: #6e492f;
-  }
-
-  .close-button {
-    position: absolute;
-    top: -7px;
-    right: -7px;
-    width: 10px;
-    height: 10px;
-    padding: 3px;
-    background-color: #d6010f;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid white;
-    opacity: 0;
-    transition: opacity 0.2s ease-in-out;
-    box-shadow: 0 2px 2px #00000015;
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
-
-    &:hover {
-      cursor: pointer;
-      opacity: 1;
-    }
-
-    &:active {
-      background-color: #b6000b;
-      border: 2px solid #eee;
-    }
-  }
-
-  .ok-button {
-    @extend .close-button;
-    background-color: #00b600;
-    left: -7px;
-
-    &:active {
-      background-color: #00a600;
-    }
-  }
-}
+@import './style.scss';
 </style>
