@@ -1,11 +1,12 @@
 <template>
   <div className='list'>
-
+    <Item />
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import Item from './Item/Item.vue';
 </script>
 
 <style scoped>
@@ -17,7 +18,7 @@ import { ref } from 'vue';
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
-  box-shadow: 0 3px 5px #594b4270;
   border-radius: 0 0 5px 5px;
+  padding-top: 10px;
 }
 </style>

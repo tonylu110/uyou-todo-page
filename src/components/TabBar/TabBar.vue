@@ -21,7 +21,7 @@
   justify-content: center;
   box-shadow: 0 3px 5px #594b4270;
   z-index: 10;
-  border-radius: 5px 5px 0 0;
+  border-radius: 7px 7px 0 0;
 
   span {
     color: white;
