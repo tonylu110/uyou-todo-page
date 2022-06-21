@@ -13,7 +13,7 @@
 import { ref } from 'vue';
 import Item from './Item/Item.vue';
 import firstLoad from '../../util/firstLoad';
-import LocalStorage from '../../util/LocalStorage';
+import LocalStorage from '../../util/localStorage';
 
 firstLoad()
 
