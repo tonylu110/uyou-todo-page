@@ -2,9 +2,11 @@
   <div className='list'>
     <Item 
       v-for="(item, index) in list" 
-      :key="index"
-      :time="item.id"
+      :key="index" 
+      :time="item.id" 
       :text="item.text" 
+      :isOk="item.ok"
+      @setOK="setOk"
     />
   </div>
 </template>
@@ -14,10 +16,25 @@ import { ref } from 'vue';
 import Item from './Item/Item.vue';
 import firstLoad from '../../util/firstLoad';
 import LocalStorage from '../../util/localStorage';
+import ITodoList from '../../interface/ITodoListArray'
+import IToDoListData from '../../interface/IToDoListData'
 
 firstLoad()
 
 const list = ref(LocalStorage('get'))
+
+const setOk = (id: number, isOk: boolean) => {
+  let listData: ITodoList[] = list.value!
+  for (let i = 0; i < listData.length; i++) {
+    if (list.value[i].id === id) {
+      list.value[i].ok = isOk
+    }
+  }
+  const localStorageSetTodoList: IToDoListData = {
+    data: list.value!
+  }
+  LocalStorage('set', localStorageSetTodoList)
+}
 </script>
 
 <style scoped>

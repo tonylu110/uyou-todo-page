@@ -23,17 +23,23 @@ import { ref } from 'vue';
 import getTime from '../../../util/getTime';
 import getOkStyle from '../../../data/getOkStyle'
 
-const okState = ref(false)
-const okStyle = ref({})
-
 const props = defineProps({
   time: Number,
   text: String,
+  isOk: Boolean
 })
+
+const okState = ref(props.isOk)
+const okStyle = ref(getOkStyle(okState.value))
+
+const emits = defineEmits<{
+  (e: 'setOK', id: number, isOk: boolean): void
+}>()
 
 const setOk = () => {
   okState.value = !okState.value
   okStyle.value = getOkStyle(okState.value)
+  emits('setOK', props.time!, okState.value)
 }
 </script>
 
