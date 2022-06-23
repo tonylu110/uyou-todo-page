@@ -3,12 +3,12 @@
     <div class="list-item">
       <div class="time-area">
         <span>{{ getTime(time as number) }}</span>
-        <div>复制</div>
+        <div>{{ i18n().copyText }}</div>
       </div>
       <span class="item-text" :style="okStyle">
         {{ text }}
       </span>
-      <div class="close-button">
+      <div class="close-button" @click="deleteItem">
         <img src="/images/close.png" alt="" />
       </div>
       <div class="ok-button" @click="setOk">
@@ -22,6 +22,7 @@
 import { ref } from 'vue';
 import getTime from '../../../util/getTime';
 import getOkStyle from '../../../data/getOkStyle'
+import i18n from '../../../i18n';
 
 const props = defineProps({
   time: Number,
@@ -33,13 +34,18 @@ const okState = ref(props.isOk)
 const okStyle = ref(getOkStyle(okState.value))
 
 const emits = defineEmits<{
-  (e: 'setOK', id: number, isOk: boolean): void
+  (e: 'setOK', id: number, isOk: boolean): void,
+  (e: 'deleteItem', id: number): void
 }>()
 
 const setOk = () => {
   okState.value = !okState.value
   okStyle.value = getOkStyle(okState.value)
   emits('setOK', props.time!, okState.value)
+}
+
+const deleteItem = () => {
+  emits('deleteItem', props.time!)
 }
 </script>
 

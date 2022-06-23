@@ -12,24 +12,25 @@
       :text="item.text" 
       :isOk="item.ok"
       @setOK="setOk"
+      @deleteItem="deleteItem"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, watchEffect } from 'vue';
+import { ref } from 'vue';
 import Item from './Item/Item.vue';
 import firstLoad from '../../util/firstLoad';
 import LocalStorage from '../../util/localStorage';
-import IToDoListData from '../../interface/IToDoListData'
 import AddItem from './AddItem/AddItem.vue';
 import ITodoList from '../../interface/ITodoListArray';
+import saveItemSet from './saveItemSet'
 
 firstLoad()
 
 const list = ref(LocalStorage('get'))
 
-const props = defineProps({
+defineProps({
   showAddItem: {
     default: false,
     type: Boolean
@@ -50,10 +51,7 @@ const setOk = (id: number, isOk: boolean) => {
       list.value![i].ok = isOk
     }
   }
-  const localStorageSetTodoList: IToDoListData = {
-    data: list.value!
-  }
-  LocalStorage('set', localStorageSetTodoList)
+  saveItemSet(list.value!)
 }
 
 const addItem = (id: number, text: string) => {
@@ -64,10 +62,16 @@ const addItem = (id: number, text: string) => {
     ok: false
   }
   list.value!.unshift(item)
-  const localStorageSetTodoList: IToDoListData = {
-    data: list.value!
+  saveItemSet(list.value!)
+}
+
+const deleteItem = (id: number) => {
+  for (let i = 0; i < list.value!.length; i++) {
+    if (list.value[i].id === id) {
+      list.value!.splice(i, 1)
+    }
   }
-  LocalStorage('set', localStorageSetTodoList)
+  saveItemSet(list.value!)
 }
 </script>
 
