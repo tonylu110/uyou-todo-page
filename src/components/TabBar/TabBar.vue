@@ -1,12 +1,18 @@
 <template>
   <div class="title-bar">
     <span>uyou ToDo</span>
-    <img src="/images/plus.png" alt="" />
+    <img src="/images/plus.png" alt="" @click="onAddClick" />
   </div>
 </template>
 
 <script setup lang="ts">
+const emits = defineEmits<{
+  (e: 'onAddClick'): void
+}>()
 
+const onAddClick = () => {
+  emits('onAddClick')
+}
 </script>
 
 <style scoped lang="scss">
