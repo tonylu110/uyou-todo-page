@@ -1,20 +1,22 @@
 <template>
-  <div>
-    <div class="list-item">
-      <div class="time-area">
-        <span>{{ getTime(time as number) }}</span>
-        <div>{{ i18n().copyText }}</div>
-      </div>
-      <span class="item-text" :style="okStyle">
-        {{ text }}
-      </span>
-      <div class="close-button" @click="deleteItem">
-        <img src="/images/close.png" alt="" />
-      </div>
-      <div class="ok-button" @click="setOk">
-        <img src="/images/ok.png" alt="" />
-      </div>
+  <div class="list-item">
+    <div class="time-area">
+      <span>{{ getTime(time as number) }}</span>
+      <div @click="copyText">{{ i18n().copyText }}</div>
     </div>
+    <span class="item-text" :style="okStyle">
+      {{ text }}
+    </span>
+    <div class="close-button" @click="deleteItem">
+      <img src="/images/close.png" alt="" />
+    </div>
+    <div class="ok-button" @click="setOk">
+      <img src="/images/ok.png" alt="" />
+    </div>
+    <Toast
+      v-if="showToast"
+      :msg="i18n().copyToast" 
+    />
   </div>
 </template>
 
@@ -23,6 +25,7 @@ import { ref } from 'vue';
 import getTime from '../../../util/getTime';
 import getOkStyle from '../../../data/getOkStyle'
 import i18n from '../../../i18n';
+import Toast from '../../Toast/Toast.vue';
 
 const props = defineProps({
   time: Number,
@@ -46,6 +49,17 @@ const setOk = () => {
 
 const deleteItem = () => {
   emits('deleteItem', props.time!)
+}
+
+const showToast = ref(false)
+
+const copyText = () => {
+  navigator.clipboard.writeText(props.text!).then(() => {
+    showToast.value = true
+    setTimeout(() => {
+      showToast.value = false
+    }, 1000)
+  })
 }
 </script>
 

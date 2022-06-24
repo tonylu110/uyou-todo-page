@@ -67,7 +67,7 @@ const addItem = (id: number, text: string) => {
 
 const deleteItem = (id: number) => {
   for (let i = 0; i < list.value!.length; i++) {
-    if (list.value[i].id === id) {
+    if (list.value![i].id === id) {
       list.value!.splice(i, 1)
     }
   }
