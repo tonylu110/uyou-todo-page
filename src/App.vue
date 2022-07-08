@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
-import Home from './pages/home.vue';
+import { onMounted, ref } from 'vue';
+import Home from './pages/Home.vue';
+import Setting from './pages/Setting.vue';
 
 onMounted(() => {
   const screenWidth = window.innerWidth;
@@ -8,10 +9,18 @@ onMounted(() => {
     window.location.href = 'https://m.todo.uyou.org.cn';
   }
 })
+
+const SettingShow = ref(false)
 </script>
 
 <template>
-  <Home />
+  <Setting
+    v-if="SettingShow"
+    @showSetting="() => SettingShow = !SettingShow"
+  />
+  <Home
+    @showSetting="() => SettingShow = !SettingShow" 
+  />
 </template>
 
 <style>

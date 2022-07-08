@@ -1,8 +1,8 @@
 <template>
   <div class="title-bar">
-    <img class="left" v-if="leftImgShow" :src="leftImg" alt="" @click="leftClick">
-    <span>uyou ToDo</span>
-    <img class="right" v-if="rightImgShow" src="/images/plus.png" alt="" @click="rightClick" />
+    <img class="left" v-if="leftImgShow" src="/images/setting.png" alt="" @click="leftClick">
+    <span>{{ title }}</span>
+    <img class="right" v-if="rightImgShow" :src="rightImg" alt="" @click="rightClick" />
   </div>
 </template>
 
@@ -16,8 +16,12 @@ defineProps({
     default: true,
     type: Boolean
   },
-  leftImg: {
-    default: '/images/setting.png',
+  rightImg: {
+    default: '/images/plus.png',
+    type: String
+  },
+  title: {
+    default: 'uyou ToDo',
     type: String
   }
 })

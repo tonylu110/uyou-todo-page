@@ -2,6 +2,7 @@
   <div class="list-main">
     <TabBar
       @rightClick="onAddClick" 
+      @leftClick="() => emits('showSetting')"
     />
     <List
       :showAddItem="showAddItem" 
@@ -16,6 +17,10 @@ import TabBar from '../components/TabBar/TabBar.vue';
 import List from '../components/List/List.vue';
 
 const showAddItem = ref(false)
+
+const emits = defineEmits<{
+  (e: 'showSetting'): void
+}>()
 
 const onAddClick = () => {
   showAddItem.value = true

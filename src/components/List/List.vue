@@ -1,5 +1,5 @@
 <template>
-  <div className='list'>
+  <div class='list'>
     <AddItem 
       v-if="showAddItem" 
       @showAddItem="setShowAddItem"
