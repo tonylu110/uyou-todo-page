@@ -1,6 +1,12 @@
 <template>
   <div class="list">
-
+    <div class="title-img">
+      <img src="/images/logo.png" alt="" />
+      <span>uyou ToDo v1.0.2</span>
+    </div>
+    <div className="setting-item lang-set" @Click="">
+      <img src="/images/lang.png" alt="" className='lang-img' />
+    </div>
   </div>
 </template>
 
@@ -8,16 +14,6 @@
 
 </script>
 
-<style scoped>
-.list {
-  background-color: white;
-  width: 100%;
-  height: 540px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow-y: scroll;
-  border-radius: 0 0 5px 5px;
-  padding-top: 10px;
-}
+<style scoped lang="scss">
+@import "./style.scss";
 </style>
