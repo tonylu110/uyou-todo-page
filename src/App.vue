@@ -43,4 +43,12 @@ body {
   align-items: center;
   user-select: none;
 }
+
+.black-back {
+    background-color: #00000030;
+    height: 550px;
+    width: 300px;
+    position: fixed;
+    top: 50px;
+}
 </style>

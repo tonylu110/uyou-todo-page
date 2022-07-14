@@ -1,7 +1,7 @@
 <template>
   <div class="list-main">
     <TabBar 
-      title="设置" 
+      :title="i18n().settingTitleText" 
       :leftImgShow="false"
       rightImg="/images/close.png"
       @rightClick="() => emits('showSetting')"
@@ -13,6 +13,7 @@
 <script setup lang="ts">
 import TabBar from '../components/TabBar/TabBar.vue';
 import SettingList from '../components/SettingList/SettingList.vue';
+import i18n from '../i18n';
 
 const emits = defineEmits<{
   (e: 'showSetting'): void

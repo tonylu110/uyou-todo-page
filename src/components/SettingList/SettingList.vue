@@ -4,14 +4,18 @@
       <img src="/images/logo.png" alt="" />
       <span>uyou ToDo v1.0.2</span>
     </div>
-    <div className="setting-item lang-set" @Click="">
-      <img src="/images/lang.png" alt="" className='lang-img' />
+    <div class="setting-item lang-set" @click="() => langMenuShow = !langMenuShow">
+      <img src="/images/lang.png" alt="" class="lang-img" />
     </div>
+    <LangSet v-if="langMenuShow" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
+import LangSet from './LangSet/LangSet.vue';
 
+const langMenuShow = ref(false)
 </script>
 
 <style scoped lang="scss">
