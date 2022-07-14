@@ -12,12 +12,7 @@
 <script setup lang="ts">
 import i18n from '../../../i18n';
 
-const emits = defineEmits<{
-  (e: 'setLangShow'): void
-}>()
-
 const menuClick = (lang: string) => {
-  emits('setLangShow')
   localStorage.setItem('lang', lang)
   location.reload()
 }
@@ -32,9 +27,8 @@ const menuClick = (lang: string) => {
   box-shadow: 0 0 10px #00000030;
   z-index: 1;
   border-radius: 7px;
-  left: 50%;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(0%, -50%);
 
   div {
     padding: 10px;

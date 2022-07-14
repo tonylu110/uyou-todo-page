@@ -48,7 +48,9 @@ body {
     background-color: #00000030;
     height: 550px;
     width: 300px;
-    position: fixed;
-    top: 50px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+    margin-top: 25px;
 }
 </style>
