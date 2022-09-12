@@ -3,7 +3,7 @@
     <TabBar 
       :title="i18n().settingTitleText" 
       :leftImgShow="false"
-      rightImg="/images/close.png"
+      rightImg="close"
       @rightClick="() => emits('showSetting')"
     />
     <SettingList />

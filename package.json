@@ -8,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "material-design-icons-iconfont": "^6.7.0",
     "moment": "^2.29.3",
     "sass": "^1.52.3",
     "vue": "^3.2.25"

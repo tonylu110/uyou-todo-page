@@ -1,8 +1,12 @@
 <template>
   <div class="title-bar">
-    <img class="left" v-if="leftImgShow" src="/images/setting.png" alt="" @click="leftClick">
+    <div class="left" v-if="leftImgShow" @click="leftClick">
+      <span class="material-icons">settings</span>
+    </div>
     <span>{{ title }}</span>
-    <img class="right" v-if="rightImgShow" :src="rightImg" alt="" @click="rightClick" />
+    <div class="right" v-if="rightImgShow" @click="rightClick">
+      <span class="material-icons">{{ rightImg }}</span>
+    </div>
   </div>
 </template>
 
@@ -17,7 +21,7 @@ defineProps({
     type: Boolean
   },
   rightImg: {
-    default: '/images/plus.png',
+    default: 'add_circle_outline',
     type: String
   },
   title: {
@@ -60,15 +64,21 @@ const leftClick = () => {
     font-weight: bold;
   }
 
-  img {
+  div {
     position: absolute;
     border-radius: 5px;
     width: 30px;
     height: 30px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     &.right {
       right: 10px;
+      width: 22px;
+      height: 22px;
+      padding: 4px;
     }
 
     &.left {
