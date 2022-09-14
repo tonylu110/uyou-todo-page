@@ -1,11 +1,22 @@
 <template>
-  <div class="item">
+  <div 
+    class="item" 
+    :style="showSwitch ? {backgroundColor: 'white', color: 'black', cursor: 'auto'} : ''"
+    @click="emits('itemFun')"
+  >
     <span>{{ title }}</span>
-    <span v-if="showArrow" class="material-icons">arrow_forward_ios</span>
+    <span v-if="showArrow && !showSwitch" class="material-icons">arrow_forward_ios</span>
+    <Switch 
+      v-if="showSwitch"
+      :swichState="switchState"
+      @switch="emits('switchFun')"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
+import Switch from '../../Switch/Switch.vue'
+
 defineProps({
   title: {
     default: 'title',
@@ -13,9 +24,19 @@ defineProps({
   },
   showArrow: {
     default: true,
-    type: String
-  }
+    type: Boolean
+  },
+  showSwitch: {
+    default: false,
+    type: Boolean
+  },
+  switchState: Boolean
 })
+
+const emits = defineEmits<{
+  (e: 'switchFun'): void,
+  (e: 'itemFun'): void
+}>()
 </script>
 
 <style scoped lang="scss">
