@@ -4,6 +4,9 @@
       <img src="/images/logo.png" alt="" />
       <span>uyou ToDo v1.0.2</span>
     </div>
+    <Item 
+      title="我的账户"
+    />
     <div class="setting-item lang-set" @click="() => langMenuShow = !langMenuShow">
       <img src="/images/lang.png" alt="" class="lang-img" />
     </div>
@@ -15,6 +18,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import LangSet from './LangSet/LangSet.vue';
+import Item from '../ItemBox/Item/Item.vue';
 
 const langMenuShow = ref(false)
 </script>
