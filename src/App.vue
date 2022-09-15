@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
-import Home from './pages/Home.vue';
-import Setting from './pages/Setting.vue';
+import { onMounted } from 'vue';
 
 onMounted(() => {
   const screenWidth = window.innerWidth;
@@ -10,17 +8,10 @@ onMounted(() => {
   }
 })
 
-const SettingShow = ref(false)
 </script>
 
 <template>
-  <Setting
-    v-if="SettingShow"
-    @showSetting="() => SettingShow = !SettingShow"
-  />
-  <Home
-    @showSetting="() => SettingShow = !SettingShow" 
-  />
+  <RouterView></RouterView>
 </template>
 
 <style>

@@ -2,7 +2,7 @@
   <div class="list-main">
     <TabBar
       @rightClick="onAddClick" 
-      @leftClick="() => emits('showSetting')"
+      @leftClick="router.push('setting')"
     />
     <List
       :showAddItem="showAddItem" 
@@ -15,6 +15,7 @@
 import { ref } from 'vue';
 import TabBar from '../components/TabBar/TabBar.vue';
 import List from '../components/List/List.vue';
+import router from '../router';
 
 const showAddItem = ref(false)
 

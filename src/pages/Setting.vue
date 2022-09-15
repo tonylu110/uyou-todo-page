@@ -4,7 +4,7 @@
       :title="i18n().settingTitleText" 
       :leftImgShow="false"
       rightImg="close"
-      @rightClick="() => emits('showSetting')"
+      @rightClick="router.push('/')"
     />
     <SettingList />
   </div>
@@ -14,6 +14,7 @@
 import TabBar from '../components/TabBar/TabBar.vue';
 import SettingList from '../components/SettingList/SettingList.vue';
 import i18n from '../i18n';
+import router from '../router';
 
 const emits = defineEmits<{
   (e: 'showSetting'): void
@@ -26,6 +27,5 @@ const emits = defineEmits<{
   flex-direction: column;
   box-shadow: 0 3px 10px #594b4270;
   border-radius: 7px;
-  margin-right: 70px;
 }
 </style>
