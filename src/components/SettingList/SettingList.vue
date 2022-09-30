@@ -6,6 +6,7 @@
     </div>
     <Item 
       title="我的账户"
+      @itemFun="router.push('/account')"
     />
     <div class="setting-item lang-set" @click="() => langMenuShow = !langMenuShow">
       <img src="/images/lang.png" alt="" class="lang-img" />
@@ -19,8 +20,10 @@
 import { ref } from 'vue';
 import LangSet from './LangSet/LangSet.vue';
 import Item from '../ItemBox/Item/Item.vue';
+import { useRouter } from 'vue-router';
 
 const langMenuShow = ref(false)
+const router = useRouter()
 </script>
 
 <style scoped lang="scss">
